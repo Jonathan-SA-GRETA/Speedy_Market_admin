@@ -23,7 +23,7 @@ public class TbStatutDAO {
     }
 
     public void update(TbStatut statut) {
-        System.out.println("merge statut " + statut.getIdStatut() + " - " + statut.getLibelle());
+        System.out.println("merge statut " + statut.getIdStatut() + " - " + statut.getSLibelle());
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         try {
             session.beginTransaction();

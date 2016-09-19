@@ -1,5 +1,5 @@
 package greta.speedymarket.model;
-// Generated 8 sept. 2016 13:41:40 by Hibernate Tools 4.3.1
+// Generated 19 sept. 2016 16:55:44 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,94 +11,123 @@ import java.util.Set;
 public class TbPersonne  implements java.io.Serializable {
 
 
-     private String code;
-     private String mail;
-     private String mdp;
-     private String tel;
-     private String nom;
-     private Set tbCommandes = new HashSet(0);
-     private TbProducteur tbProducteur;
-     private TbEmploye tbEmploye;
+     private Integer idPersonne;
+     private String PNom;
+     private String PPrenom;
+     private String PArue;
+     private String PAville;
+     private int PAcp;
+     private Integer PTel;
+     private String PMail;
+     private String PMdp;
+     private Set tbCommandesForClientIdPers = new HashSet(0);
+     private TbPreparateur tbPreparateur;
      private TbClient tbClient;
-     private Set tbArticles = new HashSet(0);
+     private Set tbCommandesForPrepaIdPers = new HashSet(0);
 
     public TbPersonne() {
     }
 
 	
-    public TbPersonne(String code, String mail, String mdp) {
-        this.code = code;
-        this.mail = mail;
-        this.mdp = mdp;
+    public TbPersonne(String PNom, String PPrenom, String PAville, int PAcp, String PMail, String PMdp) {
+        this.PNom = PNom;
+        this.PPrenom = PPrenom;
+        this.PAville = PAville;
+        this.PAcp = PAcp;
+        this.PMail = PMail;
+        this.PMdp = PMdp;
     }
-    public TbPersonne(String code, String mail, String mdp, String tel, String nom, Set tbCommandes, TbProducteur tbProducteur, TbEmploye tbEmploye, TbClient tbClient, Set tbArticles) {
-       this.code = code;
-       this.mail = mail;
-       this.mdp = mdp;
-       this.tel = tel;
-       this.nom = nom;
-       this.tbCommandes = tbCommandes;
-       this.tbProducteur = tbProducteur;
-       this.tbEmploye = tbEmploye;
+    public TbPersonne(String PNom, String PPrenom, String PArue, String PAville, int PAcp, Integer PTel, String PMail, String PMdp, Set tbCommandesForClientIdPers, TbPreparateur tbPreparateur, TbClient tbClient, Set tbCommandesForPrepaIdPers) {
+       this.PNom = PNom;
+       this.PPrenom = PPrenom;
+       this.PArue = PArue;
+       this.PAville = PAville;
+       this.PAcp = PAcp;
+       this.PTel = PTel;
+       this.PMail = PMail;
+       this.PMdp = PMdp;
+       this.tbCommandesForClientIdPers = tbCommandesForClientIdPers;
+       this.tbPreparateur = tbPreparateur;
        this.tbClient = tbClient;
-       this.tbArticles = tbArticles;
+       this.tbCommandesForPrepaIdPers = tbCommandesForPrepaIdPers;
     }
    
-    public String getCode() {
-        return this.code;
+    public Integer getIdPersonne() {
+        return this.idPersonne;
     }
     
-    public void setCode(String code) {
-        this.code = code;
+    public void setIdPersonne(Integer idPersonne) {
+        this.idPersonne = idPersonne;
     }
-    public String getMail() {
-        return this.mail;
-    }
-    
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-    public String getMdp() {
-        return this.mdp;
+    public String getPNom() {
+        return this.PNom;
     }
     
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
+    public void setPNom(String PNom) {
+        this.PNom = PNom;
     }
-    public String getTel() {
-        return this.tel;
-    }
-    
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-    public String getNom() {
-        return this.nom;
+    public String getPPrenom() {
+        return this.PPrenom;
     }
     
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setPPrenom(String PPrenom) {
+        this.PPrenom = PPrenom;
     }
-    public Set getTbCommandes() {
-        return this.tbCommandes;
-    }
-    
-    public void setTbCommandes(Set tbCommandes) {
-        this.tbCommandes = tbCommandes;
-    }
-    public TbProducteur getTbProducteur() {
-        return this.tbProducteur;
+    public String getPArue() {
+        return this.PArue;
     }
     
-    public void setTbProducteur(TbProducteur tbProducteur) {
-        this.tbProducteur = tbProducteur;
+    public void setPArue(String PArue) {
+        this.PArue = PArue;
     }
-    public TbEmploye getTbEmploye() {
-        return this.tbEmploye;
+    public String getPAville() {
+        return this.PAville;
     }
     
-    public void setTbEmploye(TbEmploye tbEmploye) {
-        this.tbEmploye = tbEmploye;
+    public void setPAville(String PAville) {
+        this.PAville = PAville;
+    }
+    public int getPAcp() {
+        return this.PAcp;
+    }
+    
+    public void setPAcp(int PAcp) {
+        this.PAcp = PAcp;
+    }
+    public Integer getPTel() {
+        return this.PTel;
+    }
+    
+    public void setPTel(Integer PTel) {
+        this.PTel = PTel;
+    }
+    public String getPMail() {
+        return this.PMail;
+    }
+    
+    public void setPMail(String PMail) {
+        this.PMail = PMail;
+    }
+    public String getPMdp() {
+        return this.PMdp;
+    }
+    
+    public void setPMdp(String PMdp) {
+        this.PMdp = PMdp;
+    }
+    public Set getTbCommandesForClientIdPers() {
+        return this.tbCommandesForClientIdPers;
+    }
+    
+    public void setTbCommandesForClientIdPers(Set tbCommandesForClientIdPers) {
+        this.tbCommandesForClientIdPers = tbCommandesForClientIdPers;
+    }
+    public TbPreparateur getTbPreparateur() {
+        return this.tbPreparateur;
+    }
+    
+    public void setTbPreparateur(TbPreparateur tbPreparateur) {
+        this.tbPreparateur = tbPreparateur;
     }
     public TbClient getTbClient() {
         return this.tbClient;
@@ -107,12 +136,12 @@ public class TbPersonne  implements java.io.Serializable {
     public void setTbClient(TbClient tbClient) {
         this.tbClient = tbClient;
     }
-    public Set getTbArticles() {
-        return this.tbArticles;
+    public Set getTbCommandesForPrepaIdPers() {
+        return this.tbCommandesForPrepaIdPers;
     }
     
-    public void setTbArticles(Set tbArticles) {
-        this.tbArticles = tbArticles;
+    public void setTbCommandesForPrepaIdPers(Set tbCommandesForPrepaIdPers) {
+        this.tbCommandesForPrepaIdPers = tbCommandesForPrepaIdPers;
     }
 
 

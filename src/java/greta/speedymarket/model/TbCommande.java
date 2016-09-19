@@ -1,5 +1,5 @@
 package greta.speedymarket.model;
-// Generated 8 sept. 2016 13:41:40 by Hibernate Tools 4.3.1
+// Generated 19 sept. 2016 16:55:44 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,45 +12,50 @@ import java.util.Set;
 public class TbCommande  implements java.io.Serializable {
 
 
-     private String codeC;
-     private TbPersonne tbPersonne;
+     private Integer idCommande;
+     private TbPersonne tbPersonneByClientIdPers;
+     private TbPersonne tbPersonneByPrepaIdPers;
      private TbStatut tbStatut;
-     private Date dateC;
-     private Date dateretraitC;
-     private Date heureretraitC;
-     private Set contenirs = new HashSet(0);
+     private Date CDate;
+     private Date CDateretrait;
+     private Set tbLigneCommandes = new HashSet(0);
 
     public TbCommande() {
     }
 
 	
-    public TbCommande(String codeC, Date dateC) {
-        this.codeC = codeC;
-        this.dateC = dateC;
+    public TbCommande(Date CDate) {
+        this.CDate = CDate;
     }
-    public TbCommande(String codeC, TbPersonne tbPersonne, TbStatut tbStatut, Date dateC, Date dateretraitC, Date heureretraitC, Set contenirs) {
-       this.codeC = codeC;
-       this.tbPersonne = tbPersonne;
+    public TbCommande(TbPersonne tbPersonneByClientIdPers, TbPersonne tbPersonneByPrepaIdPers, TbStatut tbStatut, Date CDate, Date CDateretrait, Set tbLigneCommandes) {
+       this.tbPersonneByClientIdPers = tbPersonneByClientIdPers;
+       this.tbPersonneByPrepaIdPers = tbPersonneByPrepaIdPers;
        this.tbStatut = tbStatut;
-       this.dateC = dateC;
-       this.dateretraitC = dateretraitC;
-       this.heureretraitC = heureretraitC;
-       this.contenirs = contenirs;
+       this.CDate = CDate;
+       this.CDateretrait = CDateretrait;
+       this.tbLigneCommandes = tbLigneCommandes;
     }
    
-    public String getCodeC() {
-        return this.codeC;
+    public Integer getIdCommande() {
+        return this.idCommande;
     }
     
-    public void setCodeC(String codeC) {
-        this.codeC = codeC;
+    public void setIdCommande(Integer idCommande) {
+        this.idCommande = idCommande;
     }
-    public TbPersonne getTbPersonne() {
-        return this.tbPersonne;
+    public TbPersonne getTbPersonneByClientIdPers() {
+        return this.tbPersonneByClientIdPers;
     }
     
-    public void setTbPersonne(TbPersonne tbPersonne) {
-        this.tbPersonne = tbPersonne;
+    public void setTbPersonneByClientIdPers(TbPersonne tbPersonneByClientIdPers) {
+        this.tbPersonneByClientIdPers = tbPersonneByClientIdPers;
+    }
+    public TbPersonne getTbPersonneByPrepaIdPers() {
+        return this.tbPersonneByPrepaIdPers;
+    }
+    
+    public void setTbPersonneByPrepaIdPers(TbPersonne tbPersonneByPrepaIdPers) {
+        this.tbPersonneByPrepaIdPers = tbPersonneByPrepaIdPers;
     }
     public TbStatut getTbStatut() {
         return this.tbStatut;
@@ -59,33 +64,26 @@ public class TbCommande  implements java.io.Serializable {
     public void setTbStatut(TbStatut tbStatut) {
         this.tbStatut = tbStatut;
     }
-    public Date getDateC() {
-        return this.dateC;
+    public Date getCDate() {
+        return this.CDate;
     }
     
-    public void setDateC(Date dateC) {
-        this.dateC = dateC;
+    public void setCDate(Date CDate) {
+        this.CDate = CDate;
     }
-    public Date getDateretraitC() {
-        return this.dateretraitC;
-    }
-    
-    public void setDateretraitC(Date dateretraitC) {
-        this.dateretraitC = dateretraitC;
-    }
-    public Date getHeureretraitC() {
-        return this.heureretraitC;
+    public Date getCDateretrait() {
+        return this.CDateretrait;
     }
     
-    public void setHeureretraitC(Date heureretraitC) {
-        this.heureretraitC = heureretraitC;
+    public void setCDateretrait(Date CDateretrait) {
+        this.CDateretrait = CDateretrait;
     }
-    public Set getContenirs() {
-        return this.contenirs;
+    public Set getTbLigneCommandes() {
+        return this.tbLigneCommandes;
     }
     
-    public void setContenirs(Set contenirs) {
-        this.contenirs = contenirs;
+    public void setTbLigneCommandes(Set tbLigneCommandes) {
+        this.tbLigneCommandes = tbLigneCommandes;
     }
 
 

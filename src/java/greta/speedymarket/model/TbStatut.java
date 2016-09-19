@@ -1,5 +1,5 @@
 package greta.speedymarket.model;
-// Generated 8 sept. 2016 13:41:40 by Hibernate Tools 4.3.1
+// Generated 19 sept. 2016 16:55:44 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,18 +12,18 @@ public class TbStatut  implements java.io.Serializable {
 
 
      private Integer idStatut;
-     private String libelle;
+     private String SLibelle;
      private Set tbCommandes = new HashSet(0);
 
     public TbStatut() {
     }
 
 	
-    public TbStatut(String libelle) {
-        this.libelle = libelle;
+    public TbStatut(String SLibelle) {
+        this.SLibelle = SLibelle;
     }
-    public TbStatut(String libelle, Set tbCommandes) {
-       this.libelle = libelle;
+    public TbStatut(String SLibelle, Set tbCommandes) {
+       this.SLibelle = SLibelle;
        this.tbCommandes = tbCommandes;
     }
    
@@ -34,12 +34,12 @@ public class TbStatut  implements java.io.Serializable {
     public void setIdStatut(Integer idStatut) {
         this.idStatut = idStatut;
     }
-    public String getLibelle() {
-        return this.libelle;
+    public String getSLibelle() {
+        return this.SLibelle;
     }
     
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setSLibelle(String SLibelle) {
+        this.SLibelle = SLibelle;
     }
     public Set getTbCommandes() {
         return this.tbCommandes;

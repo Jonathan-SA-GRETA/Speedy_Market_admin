@@ -23,7 +23,7 @@ public class TbArticleDAO {
     }
 
     public void update(TbArticle article) {
-        System.out.println("merge article " + article.getCodeA() + " - " + article.getLibelleA());
+        System.out.println("merge article " + article.getIdArticle()+ " - " + article.getADesignation());
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         try {
             session.beginTransaction();

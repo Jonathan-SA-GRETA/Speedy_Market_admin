@@ -10,29 +10,29 @@
     <ui:define name="content">
         <h:form id="form">
             <p:dataTable id="tableArticle" var="article" value="#{TbArticleService.loadArticles()}"
-            selectionMode="single" selection="#{TbArticleService.selectedArticle}" rowKey="#{article.codeA}"
+                         selectionMode="single" selection="#{TbArticleService.selectedArticle}" rowKey="#{article.idArticle}"
             rows="10" paginator="true">
                 <f:facet name="header">
                     Liste des articles
                 </f:facet>
                 <p:ajax event="rowSelect" update=":form" />
                 <p:column headerText="Code">
-                    <p:outputLabel value="#{article.codeA}" />
+                    <p:outputLabel value="#{article.idArticle}" />
                 </p:column>
                 <p:column headerText="Libellé">
-                    <p:outputLabel value="#{article.libelleA}" />
+                    <p:outputLabel value="#{article.ADesignation}" />
                 </p:column>
                 <p:column headerText="Description">
-                    <p:outputLabel value="#{article.descriptionA}" />
+                    <p:outputLabel value="#{article.ADescription}" />
                 </p:column>
                 <p:column headerText="Catégorie">
-                    <p:outputLabel value="#{article.tbCategories}" />
+                    <p:outputLabel value="#{article.tbCategorie.CLibelle}" />
                 </p:column>                
                 <p:column headerText="Prix HT">
-                    <p:outputLabel value="#{article.prixhtA}" />
+                    <p:outputLabel value="#{article.APht}" />
                 </p:column>
                 <p:column headerText="En stock">
-                    <p:outputLabel value="#{article.qtestockA}" />
+                    <p:outputLabel value="#{article.AQuantiteStock}" />
                 </p:column>
                 <f:facet name="footer">
                     <p:commandButton update=":form:tableArticle" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbArticleService.createArticle()}" />
@@ -46,17 +46,17 @@
                 <p:outputPanel id="articleDetail" >
                     <p:panelGrid columns="2" rendered="#{not empty TbArticleService.selectedArticle}" columnClasses="label,value">
                         <h:outputText value="Code" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.codeA}" style="width: 300px;" />                        
+                        <h:inputText value="#{TbArticleService.selectedArticle.idArticle}" style="width: 300px;" />                        
                         <h:outputText value="Libellé" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.libelleA}" style="width: 300px;" />
+                        <h:inputText value="#{TbArticleService.selectedArticle.ADesignation}" style="width: 300px;" />
                         <h:outputText value="Description" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.descriptionA}" style="width: 300px;" />
+                        <h:inputText value="#{TbArticleService.selectedArticle.ADescription}" style="width: 300px;" />
                         <h:outputText value="Prix HT" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.prixhtA}" style="width: 50px;" />
+                        <h:inputText value="#{TbArticleService.selectedArticle.APht}" style="width: 50px;" />
                         <h:outputText value="Stock" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.qtestockA}" style="width: 50px;" />
+                        <h:inputText value="#{TbArticleService.selectedArticle.AQuantiteStock}" style="width: 50px;" />
                         <h:outputText value="Catégorie" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.tbCategories}" style="width: 300px;" />                          
+                        <h:inputText value="#{TbArticleService.selectedArticle.tbCategorie.CLibelle}" style="width: 300px;" />                          
                     </p:panelGrid>
                     <br/>
                     <p:commandButton update=":form:tableArticle" icon="ui-icon-search" value="Enregistrer"

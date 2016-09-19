@@ -20,7 +20,7 @@ public class TbArticleService {
     }
     
     public void createArticle() {
-        TbArticle newArticle = new TbArticle("0", 0);
+        TbArticle newArticle = new TbArticle("Nouvel article", false);
         TbArticleDAO tbArticleDAO = new TbArticleDAO();
         tbArticleDAO.save(newArticle);
     }

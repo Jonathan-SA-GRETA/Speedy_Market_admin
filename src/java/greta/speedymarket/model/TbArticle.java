@@ -1,5 +1,5 @@
 package greta.speedymarket.model;
-// Generated 8 sept. 2016 13:41:40 by Hibernate Tools 4.3.1
+// Generated 19 sept. 2016 16:55:44 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,107 +11,106 @@ import java.util.Set;
 public class TbArticle  implements java.io.Serializable {
 
 
-     private String codeA;
-     private TbPersonne tbPersonne;
-     private String libelleA;
-     private String descriptionA;
-     private Float qtestockA;
-     private float prixhtA;
-     private String photoA;
-     private String label;
-     private Set tbCategories = new HashSet(0);
-     private Set contenirs = new HashSet(0);
+     private Integer idArticle;
+     private TbCategorie tbCategorie;
+     private TbImage tbImage;
+     private TbTva tbTva;
+     private String ADesignation;
+     private Float APht;
+     private String ADescription;
+     private Integer AQuantiteStock;
+     private boolean AVisible;
+     private Set tbLigneCommandes = new HashSet(0);
 
     public TbArticle() {
     }
 
 	
-    public TbArticle(String codeA, float prixhtA) {
-        this.codeA = codeA;
-        this.prixhtA = prixhtA;
+    public TbArticle(String ADesignation, boolean AVisible) {
+        this.ADesignation = ADesignation;
+        this.AVisible = AVisible;
     }
-    public TbArticle(String codeA, TbPersonne tbPersonne, String libelleA, String descriptionA, Float qtestockA, float prixhtA, String photoA, String label, Set tbCategories, Set contenirs) {
-       this.codeA = codeA;
-       this.tbPersonne = tbPersonne;
-       this.libelleA = libelleA;
-       this.descriptionA = descriptionA;
-       this.qtestockA = qtestockA;
-       this.prixhtA = prixhtA;
-       this.photoA = photoA;
-       this.label = label;
-       this.tbCategories = tbCategories;
-       this.contenirs = contenirs;
+    public TbArticle(TbCategorie tbCategorie, TbImage tbImage, TbTva tbTva, String ADesignation, Float APht, String ADescription, Integer AQuantiteStock, boolean AVisible, Set tbLigneCommandes) {
+       this.tbCategorie = tbCategorie;
+       this.tbImage = tbImage;
+       this.tbTva = tbTva;
+       this.ADesignation = ADesignation;
+       this.APht = APht;
+       this.ADescription = ADescription;
+       this.AQuantiteStock = AQuantiteStock;
+       this.AVisible = AVisible;
+       this.tbLigneCommandes = tbLigneCommandes;
     }
    
-    public String getCodeA() {
-        return this.codeA;
+    public Integer getIdArticle() {
+        return this.idArticle;
     }
     
-    public void setCodeA(String codeA) {
-        this.codeA = codeA;
+    public void setIdArticle(Integer idArticle) {
+        this.idArticle = idArticle;
     }
-    public TbPersonne getTbPersonne() {
-        return this.tbPersonne;
-    }
-    
-    public void setTbPersonne(TbPersonne tbPersonne) {
-        this.tbPersonne = tbPersonne;
-    }
-    public String getLibelleA() {
-        return this.libelleA;
+    public TbCategorie getTbCategorie() {
+        return this.tbCategorie;
     }
     
-    public void setLibelleA(String libelleA) {
-        this.libelleA = libelleA;
+    public void setTbCategorie(TbCategorie tbCategorie) {
+        this.tbCategorie = tbCategorie;
     }
-    public String getDescriptionA() {
-        return this.descriptionA;
-    }
-    
-    public void setDescriptionA(String descriptionA) {
-        this.descriptionA = descriptionA;
-    }
-    public Float getQtestockA() {
-        return this.qtestockA;
+    public TbImage getTbImage() {
+        return this.tbImage;
     }
     
-    public void setQtestockA(Float qtestockA) {
-        this.qtestockA = qtestockA;
+    public void setTbImage(TbImage tbImage) {
+        this.tbImage = tbImage;
     }
-    public float getPrixhtA() {
-        return this.prixhtA;
-    }
-    
-    public void setPrixhtA(float prixhtA) {
-        this.prixhtA = prixhtA;
-    }
-    public String getPhotoA() {
-        return this.photoA;
+    public TbTva getTbTva() {
+        return this.tbTva;
     }
     
-    public void setPhotoA(String photoA) {
-        this.photoA = photoA;
+    public void setTbTva(TbTva tbTva) {
+        this.tbTva = tbTva;
     }
-    public String getLabel() {
-        return this.label;
-    }
-    
-    public void setLabel(String label) {
-        this.label = label;
-    }
-    public Set getTbCategories() {
-        return this.tbCategories;
+    public String getADesignation() {
+        return this.ADesignation;
     }
     
-    public void setTbCategories(Set tbCategories) {
-        this.tbCategories = tbCategories;
+    public void setADesignation(String ADesignation) {
+        this.ADesignation = ADesignation;
     }
-    public Set getContenirs() {
-        return this.contenirs;
+    public Float getAPht() {
+        return this.APht;
     }
     
-    public void setContenirs(Set contenirs) {
-        this.contenirs = contenirs;
+    public void setAPht(Float APht) {
+        this.APht = APht;
+    }
+    public String getADescription() {
+        return this.ADescription;
+    }
+    
+    public void setADescription(String ADescription) {
+        this.ADescription = ADescription;
+    }
+    public Integer getAQuantiteStock() {
+        return this.AQuantiteStock;
+    }
+    
+    public void setAQuantiteStock(Integer AQuantiteStock) {
+        this.AQuantiteStock = AQuantiteStock;
+    }
+    public boolean isAVisible() {
+        return this.AVisible;
+    }
+    
+    public void setAVisible(boolean AVisible) {
+        this.AVisible = AVisible;
+    }
+    public Set getTbLigneCommandes() {
+        return this.tbLigneCommandes;
+    }
+    
+    public void setTbLigneCommandes(Set tbLigneCommandes) {
+        this.tbLigneCommandes = tbLigneCommandes;
     }
 
 
