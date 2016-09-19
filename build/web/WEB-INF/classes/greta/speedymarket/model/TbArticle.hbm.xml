@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 sept. 2016 13:41:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greta.speedymarket.model.TbArticle" table="tb_article" catalog="db_speedymarket" optimistic-lock="version">
+        <id name="codeA" type="string">
+            <column name="codeA" length="25" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbPersonne" class="greta.speedymarket.model.TbPersonne" fetch="select">
+            <column name="code" length="25" />
+        </many-to-one>
+        <property name="libelleA" type="string">
+            <column name="libelleA" length="25" />
+        </property>
+        <property name="descriptionA" type="string">
+            <column name="descriptionA" length="200" />
+        </property>
+        <property name="qtestockA" type="java.lang.Float">
+            <column name="qtestockA" precision="12" scale="0" />
+        </property>
+        <property name="prixhtA" type="float">
+            <column name="prixhtA" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="photoA" type="string">
+            <column name="photoA" length="100" />
+        </property>
+        <property name="label" type="string">
+            <column name="label" length="100" />
+        </property>
+        <set name="tbCategories" table="appartenir" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="codeA" length="25" not-null="true" />
+            </key>
+            <many-to-many entity-name="greta.speedymarket.model.TbCategorie">
+                <column name="codeC" length="25" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="contenirs" table="contenir" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codeA" length="25" not-null="true" />
+            </key>
+            <one-to-many class="greta.speedymarket.model.Contenir" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 sept. 2016 13:41:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greta.speedymarket.model.TbCommande" table="tb_commande" catalog="db_speedymarket" optimistic-lock="version">
+        <id name="codeC" type="string">
+            <column name="codeC" length="25" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbPersonne" class="greta.speedymarket.model.TbPersonne" fetch="select">
+            <column name="code" length="25" />
+        </many-to-one>
+        <many-to-one name="tbStatut" class="greta.speedymarket.model.TbStatut" fetch="select">
+            <column name="statutC" />
+        </many-to-one>
+        <property name="dateC" type="timestamp">
+            <column name="dateC" length="19" not-null="true" />
+        </property>
+        <property name="dateretraitC" type="date">
+            <column name="dateretraitC" length="10" />
+        </property>
+        <property name="heureretraitC" type="time">
+            <column name="heureretraitC" length="8" />
+        </property>
+        <set name="contenirs" table="contenir" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codeC" length="25" not-null="true" />
+            </key>
+            <one-to-many class="greta.speedymarket.model.Contenir" />
+        </set>
+    </class>
+</hibernate-mapping>

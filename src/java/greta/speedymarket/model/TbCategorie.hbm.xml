@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 sept. 2016 13:41:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greta.speedymarket.model.TbCategorie" table="tb_categorie" catalog="db_speedymarket" optimistic-lock="version">
+        <id name="codeC" type="string">
+            <column name="codeC" length="25" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbCategorie" class="greta.speedymarket.model.TbCategorie" fetch="select">
+            <column name="codeC_parent" length="25" />
+        </many-to-one>
+        <property name="libelleC" type="string">
+            <column name="libelleC" length="25" />
+        </property>
+        <set name="tbArticles" table="appartenir" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codeC" length="25" not-null="true" />
+            </key>
+            <many-to-many entity-name="greta.speedymarket.model.TbArticle">
+                <column name="codeA" length="25" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="tbCategories" table="tb_categorie" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codeC_parent" length="25" />
+            </key>
+            <one-to-many class="greta.speedymarket.model.TbCategorie" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 sept. 2016 13:41:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greta.speedymarket.model.TbClient" table="tb_client" catalog="db_speedymarket" optimistic-lock="version">
+        <id name="code" type="string">
+            <column name="code" length="25" />
+            <generator class="foreign">
+                <param name="property">tbPersonne</param>
+            </generator>
+        </id>
+        <one-to-one name="tbPersonne" class="greta.speedymarket.model.TbPersonne" constrained="true"></one-to-one>
+        <property name="dateinscription" type="date">
+            <column name="dateinscription" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
