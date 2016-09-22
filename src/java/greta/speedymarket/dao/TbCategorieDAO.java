@@ -12,78 +12,72 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import org.hibernate.Session;
 
-
-
-
-@ManagedBean(name="TbCategorieDAO")
+@ManagedBean(name = "TbCategorieDAO")
 public class TbCategorieDAO {
 
-public void save(TbCategorie categorie) {
-System.out.println("persist categorie");
+    public void save(TbCategorie categorie) {
+        System.out.println("persist categorie");
 
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-try {
-session.beginTransaction();
-session.save(categorie);
-session.getTransaction().commit();
+        try {
+            session.beginTransaction();
+            session.save(categorie);
+            session.getTransaction().commit();
 
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
-}
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
 
+    public void update(TbCategorie categorie) {
+        System.out.println("merge categorie " + categorie.getIdCategorie() + " - " + categorie.getCLibelle());
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-public void update(TbCategorie categorie) {
-System.out.println("merge categorie " + categorie.getIdCategorie() + " - " + categorie.getCLibelle());
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
 
-try {
+            session.beginTransaction();
+            session.update(categorie);
+            session.getTransaction().commit();
 
-session.beginTransaction();
-session.update(categorie);
-session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
 
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
-}
+    public void remove(TbCategorie categorie) {
+        System.out.println("Suppression du categorie " + categorie);
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-public void remove(TbCategorie categorie) {
-System.out.println("Suppression du categorie "+categorie);
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
+            session.beginTransaction();
+            session.delete(categorie);
+            session.getTransaction().commit();
 
-try {
-session.beginTransaction();
-session.delete(categorie);
-session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
 
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
+    }
 
-}
+    public List<TbCategorie> findAll() {
+        List<TbCategorie> lesCategories = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
+        try {
+            session.beginTransaction();
+            lesCategories = session.createQuery("from TbCategorie").list();
+            session.getTransaction().commit();
 
-public List<TbCategorie> findAll() {
-List<TbCategorie> lesCategories = new ArrayList<>();
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
 
-try {
-session.beginTransaction();
-lesCategories = session.createQuery("from TbCategorie").list();
-session.getTransaction().commit();
-
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
-
-return lesCategories;
-}
+        return lesCategories;
+    }
 
 }
-

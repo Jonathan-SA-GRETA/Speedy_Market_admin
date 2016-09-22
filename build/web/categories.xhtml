@@ -8,6 +8,50 @@
     xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        Page categories
+        <h:form id="form">
+            <p:dataTable id="tableCategorie" var="categorie" value="#{TbCategorieService.loadCategories()}"
+                         selectionMode="single" selection="#{TbCategorieService.selectedCategorie}" rowKey="#{categorie.idCategorie}"
+            rows="10" paginator="true">
+                <f:facet name="header">
+                    Liste des categories
+                </f:facet>
+                <p:ajax event="rowSelect" update=":form" />
+                <p:column headerText="Code">
+                    <p:outputLabel value="#{categorie.idCategorie}" />
+                </p:column>
+                <p:column headerText="Libellé">
+                    <p:outputLabel value="#{categorie.CLibelle}" />
+                </p:column>
+                <p:column headerText="Code Parent">
+                    <p:outputLabel value="#{categorie.tbCategorie.CLibelle}" />
+                </p:column>
+                <p:column headerText="Lien Image">
+                    <p:outputLabel value="#{categorie.tbImage}" />
+                </p:column>
+                
+                <f:facet name="footer">
+                    <p:commandButton update=":form:tableCategorie" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbCategorieService.createCategorie()}" />
+                    <p:commandButton update=":form:categorieDetail" icon="ui-icon-search" value="Editer" oncomplete="PF('categorieDialog').show()" disabled="#{empty TbCategorieService.selectedCategorie}" />
+                    <p:commandButton update=":form:tableCategorie" icon="ui-icon-closethick" value="Supprimer" actionListener="#{TbCategorieService.deleteCategorie(TbCategorieService.selectedCategorie)}" disabled="#{empty TbCategorieService.selectedCategorie}" />
+                </f:facet> 
+            </p:dataTable>
+            
+            <p:dialog header="Détail categorie" widgetVar="categorieDialog"
+            showEffect="fade" hideEffect="fade"
+            resizable="true" height="400" width="450" >
+                <p:outputPanel id="categorieDetail" >
+                    <p:panelGrid columns="2" rendered="#{not empty TbCategorieService.selectedCategorie}" columnClasses="label,value">                    
+                        <h:outputText value="Libellé" />
+                        <h:inputText value="#{TbCategorieService.selectedCategorie.CLibelle}" style="width: 300px;" />                          
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton update=":form:tableCategorie" icon="ui-icon-search" value="Enregistrer"
+                    actionListener="#{TbCategorieService.saveCategorie(TbCategorieService.selectedCategorie)}"
+                    onsuccess="PF('categorieDialog').hide()"
+                    style="text-align: center;"/>
+                </p:outputPanel>
+            </p:dialog>            
+            
+        </h:form>
     </ui:define>  
 </ui:composition>

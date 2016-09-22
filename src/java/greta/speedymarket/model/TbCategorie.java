@@ -77,8 +77,6 @@ public class TbCategorie  implements java.io.Serializable {
     }
 
 
-
-
 }
 
 
