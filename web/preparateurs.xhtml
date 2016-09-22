@@ -7,7 +7,70 @@
     template="/templates/template.xhtml"
     xmlns:p="http://primefaces.org/ui">
 
+        
     <ui:define name="content">
-        Page preparateurs
+        <h:form id="form">
+            <p:dataTable id="tablePreparateur" var="preparateur" value="#{TbPreparateurService.loadPreparateurs()}"
+            selectionMode="single" selection="#{TbPreparateurService.selectedPreparateur}" rowKey="#{preparateur.idPersonne}"
+            rows="10" paginator="true">
+                <f:facet name="header">
+                    Liste des Préparateurs
+                </f:facet>
+                <p:ajax event="rowSelect" update=":form" />
+                <p:column headerText="Nom">
+                    <p:outputLabel value="#{preparateur.tbPersonne.PNom}" />
+                </p:column>
+                <p:column headerText="Prenom">
+                    <p:outputLabel value="#{preparateur.tbPersonne.PPrenom}" />
+                </p:column>
+                <p:column headerText="Rue">
+                    <p:outputLabel value="#{preparateur.tbPersonne.PArue}" />
+                </p:column>
+                <p:column headerText="Code postal">
+                    <p:outputLabel value="#{preparateur.tbPersonne.PAcp}" />
+                </p:column>
+                 <p:column headerText="Ville">
+                    <p:outputLabel value="#{preparateur.tbPersonne.PAville}" />
+                </p:column>
+                 <p:column headerText="Num Telephone">
+                    <p:outputLabel value="#{preparateur.tbPersonne.PTel}" />
+                </p:column>
+                 <p:column headerText="EMail">
+                    <p:outputLabel value="#{preparateur.tbPersonne.PMail}" />
+                </p:column>
+                       <f:facet name="footer">
+                    <p:commandButton update=":form:tablePreparateur" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbPreparateurService.createPreparateur()}" />
+                    <p:commandButton update=":form:preparateurDetail" icon="ui-icon-search" value="Editer" oncomplete="PF('preparateurDialog').show()" disabled="#{empty TbPreparateurService.selectedPreparateur}" />
+                    <p:commandButton update=":form:tablePreparateur" icon="ui-icon-closethick" value="Supprimer" actionListener="#{TbPreparateurService.deletePreparateur(TbPreparateurService.selectedPreparateur)}" disabled="#{empty TbPreparateurService.selectedPreparateur}" />
+                </f:facet>                
+            </p:dataTable>
+            <p:dialog header="Détail preparateur" widgetVar="preparateurDialog"
+            showEffect="fade" hideEffect="fade"
+            resizable="true" height="400" width="450" >
+                <p:outputPanel id="preparateurDetail" >
+                    <p:panelGrid columns="2" rendered="#{not empty TbPreparateurService.selectedPreparateur}" columnClasses="label,value">
+                        <h:outputText value="Nom" />
+                        <h:inputText value="#{TbPreparateurService.selectedPreparateur.tbPersonne.PNom}" style="width: 300px;" />                        
+                        <h:outputText value="Prénom" />
+                        <h:inputText value="#{TbPreparateurService.selectedPreparateur.tbPersonne.PPrenom}" style="width: 300px;" />
+                        <h:outputText value="Rue" />
+                        <h:inputText value="#{TbPreparateurService.selectedPreparateur.tbPersonne.PArue}" style="width: 300px;" />
+                        <h:outputText value="Code postal" />
+                        <h:inputText value="#{TbPreparateurService.selectedPreparateur.tbPersonne.PAcp}" style="width: 300px;" />                        
+                        <h:outputText value="Ville" />
+                        <h:inputText value="#{TbPreparateurService.selectedPreparateur.tbPersonne.PAville}" style="width: 300px;" />
+                        <h:outputText value="Tel" />
+                        <h:inputText value="#{TbPreparateurService.selectedPreparateur.tbPersonne.PTel}" style="width: 300px;" />
+                        <h:outputText value="E-mail" />
+                        <h:inputText value="#{TbPreparateurService.selectedPreparateur.tbPersonne.PMail}" style="width: 300px;" />                           
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton update=":form:tablePreparateur" icon="ui-icon-search" value="Enregistrer"
+                                     actionListener="#{TbPreparateurService.savePreparateur(TbPreparateurService.selectedPreparateur)}"
+                    onsuccess="PF('preparateurDialog').hide()"
+                    style="text-align: center;"/>
+                </p:outputPanel>
+            </p:dialog>            
+        </h:form>
     </ui:define>  
 </ui:composition>

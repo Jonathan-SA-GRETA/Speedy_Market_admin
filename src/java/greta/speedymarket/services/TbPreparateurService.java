@@ -6,6 +6,7 @@
 package greta.speedymarket.services;
 
 import greta.speedymarket.dao.TbPreparateurDAO;
+import greta.speedymarket.model.TbPersonne;
 import greta.speedymarket.model.TbPreparateur;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -27,7 +28,7 @@ this.selectedPreparateur = selectedPreparateur;
 }
 
 public void createPreparateur() {
-TbPreparateur newPreparateur = new TbPreparateur();
+TbPreparateur newPreparateur = new TbPreparateur(new TbPersonne("","","",0,"",""));
 TbPreparateurDAO tbPreparateurDAO = new TbPreparateurDAO();
 tbPreparateurDAO.save(newPreparateur);
 }
