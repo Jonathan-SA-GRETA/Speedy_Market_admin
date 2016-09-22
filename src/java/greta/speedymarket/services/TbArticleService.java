@@ -33,7 +33,6 @@ public class TbArticleService {
     }
     
     public void deleteArticle(TbArticle article) {
-        System.out.println("Rentre");
         if (article != null) {
             TbArticleDAO tbArticleDAO = new TbArticleDAO();
             tbArticleDAO.remove(article);

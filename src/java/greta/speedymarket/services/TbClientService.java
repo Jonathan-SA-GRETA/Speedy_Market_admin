@@ -28,7 +28,7 @@ this.selectedClient = selectedClient;
 }
 
 public void createClient() {
-TbClient newClient = (TbClient)new TbClient();
+TbClient newClient = (TbClient)new TbClient(new TbPersonne("Nouveau","Client","",0,"",""));
 TbClientDAO tbClientDAO = new TbClientDAO();
 tbClientDAO.save(newClient);
 }
