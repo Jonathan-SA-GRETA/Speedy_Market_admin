@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Speedy Market Admin</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+
+    <h:body>
+        <div id="header">
+            <div id="headerContent">
+                <h2>Speedy Market</h2>
+            </div>
+        </div>
+
+        <h:panelGroup id="content" layout="block">
+            <p:stack icon="/resources/images/dock/stack.png" expanded="true">
+                <p:menuitem value="Status" icon="/resources/images/dock/statuts.png" outcome="statuts.xhtml"/>
+                <p:menuitem value="Articles" icon="/resources/images/dock/articles.png" outcome="articles.xhtml"/>
+                <p:menuitem value="TVA" icon="/resources/images/dock/TVA.png" outcome="TVA.xhtml"/>
+                <p:menuitem value="Commandes" icon="/resources/images/dock/commandes.png" outcome="commandes.xhtml"/>
+                <p:menuitem value="Catégories" icon="/resources/images/dock/categories.png" outcome="categories.xhtml"/>
+                <p:menuitem value="Préparateurs" icon="/resources/images/dock/preparateurs.png" outcome="preparateurs.xhtml"/>            
+            </p:stack>
+            <ui:insert name="content">Main Content</ui:insert>
+        </h:panelGroup>
+
+        <div id="footer">
+            <span>
+                <h1>SpeedyMarket</h1>
+                <i>Application d'administration des produits, comptes, commandes...</i>
+            </span>
+        </div>
+    </h:body>
+</html>
