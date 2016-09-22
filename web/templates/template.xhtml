@@ -18,14 +18,12 @@
             }
         </style>
     </h:head>
-
     <h:body>
         <div id="header">
             <div id="headerContent">
-                <h2>Speedy Market</h2>
+                <h2>Speedy Market: Panneau d'administration</h2>
             </div>
         </div>
-
         <h:panelGroup id="content" layout="block">
             <p:stack icon="/resources/images/dock/stack.png" expanded="true">
                 <p:menuitem value="Status" icon="/resources/images/dock/statuts.png" outcome="statuts.xhtml"/>
@@ -38,7 +36,6 @@
             </p:stack>
             <ui:insert name="content">Main Content</ui:insert>
         </h:panelGroup>
-
         <div id="footer">
         <h:form>
             <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
