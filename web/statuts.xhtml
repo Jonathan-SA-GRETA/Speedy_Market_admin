@@ -17,7 +17,7 @@
                 </f:facet>
                 <p:ajax event="rowSelect" update=":form" />
                 <p:column headerText="Libellé">
-                    <p:outputLabel value="#{statut.libelle}" />
+                    <p:outputLabel value="#{statut.SLibelle}" />
                 </p:column>
                 <f:facet name="footer">
                     <p:commandButton update=":form:tableStatuts" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbStatutService.createStatut()}" />
@@ -33,7 +33,7 @@
                 <p:outputPanel id="statutDetail" >
                     <p:panelGrid columns="2" rendered="#{not empty TbStatutService.selectedStatut}" columnClasses="label,value">
                         <h:outputText value="Libellé" />
-                        <h:inputText value="#{TbStatutService.selectedStatut.libelle}" style="width: 300px;" />
+                        <h:inputText value="#{TbStatutService.selectedStatut.SLibelle}" style="width: 300px;" />
                     </p:panelGrid>
                     <br/>
                     <p:commandButton update=":form:tableStatuts" icon="ui-icon-search" value="Enregistrer"

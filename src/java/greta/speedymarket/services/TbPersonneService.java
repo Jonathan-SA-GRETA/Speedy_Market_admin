@@ -25,7 +25,7 @@ this.selectedPersonne = selectedPersonne;
 }
 
 public void createPersonne() {
-TbPersonne newPersonne = new TbPersonne("Nouveau personne");
+TbPersonne newPersonne = new TbPersonne();
 TbPersonneDAO tbPersonneDAO = new TbPersonneDAO();
 tbPersonneDAO.save(newPersonne);
 }
