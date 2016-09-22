@@ -11,6 +11,12 @@
         <title>Speedy Market Admin</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <h:outputStylesheet library="css" name="style.css" />
+        <style type="text/css" lang="stylesheet">
+            .ui-stack{
+                position: absolute;
+                right: 100px;
+            }
+        </style>
     </h:head>
 
     <h:body>
@@ -27,7 +33,8 @@
                 <p:menuitem value="TVA" icon="/resources/images/dock/TVA.png" outcome="TVA.xhtml"/>
                 <p:menuitem value="Commandes" icon="/resources/images/dock/commandes.png" outcome="commandes.xhtml"/>
                 <p:menuitem value="Catégories" icon="/resources/images/dock/categories.png" outcome="categories.xhtml"/>
-                <p:menuitem value="Préparateurs" icon="/resources/images/dock/preparateurs.png" outcome="preparateurs.xhtml"/>            
+                <p:menuitem value="Préparateurs" icon="/resources/images/dock/preparateurs.png" outcome="preparateurs.xhtml"/>
+                <p:menuitem value="Clients" icon="/resources/images/dock/preparateurs.png" outcome="clients.xhtml"/> 
             </p:stack>
             <ui:insert name="content">Main Content</ui:insert>
         </h:panelGroup>
