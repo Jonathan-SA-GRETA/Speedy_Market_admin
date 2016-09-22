@@ -27,7 +27,7 @@
                 </p:column>
                 <f:facet name="footer">
                     <p:commandButton update=":form:tableTVA" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbTvaService.createTva()}" />
-                    <p:commandButton update=":form:tvaDetail" icon="ui-icon-search" value="Editer" oncomplete="PF('tvaDialog').show()" disabled="#{empty TbArticleService.selectedArticle}" />
+                    <p:commandButton update=":form:tvaDetail" icon="ui-icon-search" value="Editer" oncomplete="PF('tvaDialog').show()" disabled="#{empty TbTvaService.selectedTva}" />
                     <p:commandButton update=":form:tableTVA" icon="ui-icon-closethick" value="Supprimer" actionListener="#{TbTvaService.deleteTva(TbTvaService.setSelectedTva)}" disabled="#{empty TbTvaService.selectedTva}" />
                 </f:facet>                
             </p:dataTable>

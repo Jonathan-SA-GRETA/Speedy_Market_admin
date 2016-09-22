@@ -8,6 +8,68 @@
     xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        Page clients
+        <h:form id="form">
+            <p:dataTable id="tableClients" var="client" value="#{TbClientService.loadClients()}"
+                         selectionMode="single" selection="#{TbClientService.selectedClient}" rowKey="#{client.idPersonne}"
+            rows="10" paginator="true">
+                <f:facet name="header">
+                    Liste des clients
+                </f:facet>
+                <p:ajax event="rowSelect" update=":form" />
+                <p:column headerText="Nom">
+                    <p:outputLabel value="#{client.tbPersonne.PNom}" />
+                </p:column>
+                <p:column headerText="Prénom">
+                    <p:outputLabel value="#{client.tbPersonne.PPrenom}" />
+                </p:column>
+                <p:column headerText="Rue">
+                    <p:outputLabel value="#{client.tbPersonne.PArue}" />
+                </p:column>
+                <p:column headerText="Code postal">
+                    <p:outputLabel value="#{client.tbPersonne.PAcp}" />
+                </p:column>                
+                <p:column headerText="Ville">
+                    <p:outputLabel value="#{client.tbPersonne.PAville}" />
+                </p:column>
+                <p:column headerText="Tel">
+                    <p:outputLabel value="#{client.tbPersonne.PTel}" />
+                </p:column>                
+                <p:column headerText="E-mail">
+                    <p:outputLabel value="#{client.tbPersonne.PMail}" />
+                </p:column>                
+                <f:facet name="footer">
+                    <p:commandButton update=":form:tableClients" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbClientService.createClient()}" />
+                    <p:commandButton update=":form:clientDetail" icon="ui-icon-search" value="Editer" oncomplete="PF('clientDialog').show()" disabled="#{empty TbClientService.selectedClient}" />
+                    <p:commandButton update=":form:tableClients" icon="ui-icon-closethick" value="Supprimer" actionListener="#{TbClientService.deleteClient(TbClientService.selectedClient)}" disabled="#{empty TbClientService.selectedClient}" />
+                </f:facet>                
+            </p:dataTable>
+            <p:dialog header="Détail client" widgetVar="clientDialog"
+            showEffect="fade" hideEffect="fade"
+            resizable="true" height="400" width="450" >
+                <p:outputPanel id="clientDetail" >
+                    <p:panelGrid columns="2" rendered="#{not empty TbClientService.selectedClient}" columnClasses="label,value">
+                        <h:outputText value="Nom" />
+                        <h:inputText value="#{TbClientService.selectedClient.tbPersonne.PNom}" style="width: 300px;" />                        
+                        <h:outputText value="Prénom" />
+                        <h:inputText value="#{TbClientService.selectedClient.tbPersonne.PPrenom}" style="width: 300px;" />
+                        <h:outputText value="Rue" />
+                        <h:inputText value="#{TbClientService.selectedClient.tbPersonne.PArue}" style="width: 300px;" />
+                        <h:outputText value="Code postal" />
+                        <h:inputText value="#{TbClientService.selectedClient.tbPersonne.PAcp}" style="width: 300px;" />                        
+                        <h:outputText value="Ville" />
+                        <h:inputText value="#{TbClientService.selectedClient.tbPersonne.PAville}" style="width: 300px;" />
+                        <h:outputText value="Tel" />
+                        <h:inputText value="#{TbClientService.selectedClient.tbPersonne.PTel}" style="width: 300px;" />
+                        <h:outputText value="E-mail" />
+                        <h:inputText value="#{TbClientService.selectedClient.tbPersonne.PMail}" style="width: 300px;" />                           
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton update=":form:tableClients" icon="ui-icon-search" value="Enregistrer"
+                                     actionListener="#{TbClientService.saveClient(TbClientService.selectedClient)}"
+                    onsuccess="PF('clientDialog').hide()"
+                    style="text-align: center;"/>
+                </p:outputPanel>
+            </p:dialog>            
+        </h:form>
     </ui:define>  
 </ui:composition>
