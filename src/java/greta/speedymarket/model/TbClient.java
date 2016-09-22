@@ -33,10 +33,6 @@ public class TbClient  implements java.io.Serializable {
     public void setTbPersonne(TbPersonne tbPersonne) {
         this.tbPersonne = tbPersonne;
     }
-
-
-
-
 }
 
 

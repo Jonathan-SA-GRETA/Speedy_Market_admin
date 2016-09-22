@@ -51,7 +51,11 @@ public class TbPersonne  implements java.io.Serializable {
        this.tbClient = tbClient;
        this.tbCommandesForPrepaIdPers = tbCommandesForPrepaIdPers;
     }
-   
+    public TbPersonne(String nouveau_client) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     public Integer getIdPersonne() {
         return this.idPersonne;
     }
