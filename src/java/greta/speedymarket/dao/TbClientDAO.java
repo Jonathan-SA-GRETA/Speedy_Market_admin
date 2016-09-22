@@ -42,7 +42,6 @@ try {
 session.beginTransaction();
 session.update(client);
 session.getTransaction().commit();
-
 } catch (RuntimeException e) {
 e.printStackTrace();
 session.getTransaction().rollback();
