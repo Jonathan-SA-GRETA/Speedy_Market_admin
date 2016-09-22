@@ -8,6 +8,48 @@
     xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        Page TVA
+        <h:form id="form">
+            <p:dataTable id="tableTVA" var="tva" value="#{TbTvaService.loadTvas()}"
+                         selectionMode="single" selection="#{TbTvaService.selectedTva}" rowKey="#{tva.idTva}"
+            rows="10" paginator="true">
+                <f:facet name="header">
+                    Liste des TVAs
+                </f:facet>
+                <p:ajax event="rowSelect" update=":form" />
+                <p:column headerText="Code TVA">
+                    <p:outputLabel value="#{tva.idTva}" />
+                </p:column>
+                <p:column headerText="Libellé">
+                    <p:outputLabel value="#{tva.TLibelle}" />
+                </p:column>
+                <p:column headerText="Taux">
+                    <p:outputLabel value="#{tva.TTaux}" />
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton update=":form:tableTVA" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbTvaService.createTva()}" />
+                    <p:commandButton update=":form:tvaDetail" icon="ui-icon-search" value="Editer" oncomplete="PF('tvaDialog').show()" disabled="#{empty TbArticleService.selectedArticle}" />
+                    <p:commandButton update=":form:tableTVA" icon="ui-icon-closethick" value="Supprimer" actionListener="#{TbTvaService.deleteTva(TbTvaService.setSelectedTva)}" disabled="#{empty TbTvaService.selectedTva}" />
+                </f:facet>                
+            </p:dataTable>
+            <p:dialog header="Détail TVA" widgetVar="tvaDialog"
+            showEffect="fade" hideEffect="fade"
+            resizable="true" height="400" width="450" >
+                <p:outputPanel id="tvaDetail" >
+                    <p:panelGrid columns="2" rendered="#{not empty TbTvaService.selectedTva}" columnClasses="label,value">
+                        <h:outputText value="Code TVA" />
+                        <h:inputText value="#{TbTvaService.selectedTva.idTva}" style="width: 300px;" />                        
+                        <h:outputText value="Libellé" />
+                        <h:inputText value="#{TbTvaService.selectedTva.TLibelle}" style="width: 300px;" />
+                        <h:outputText value="Taux" />
+                        <h:inputText value="#{TbTvaService.selectedTva.TTaux}" style="width: 300px;" />                       
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton update=":form:tableTVA" icon="ui-icon-search" value="Enregistrer"
+                                     actionListener="#{TbTvaService.saveTva(TbTvaService.selectedTva)}"
+                    onsuccess="PF('tvaDialog').hide()"
+                    style="text-align: center;"/>
+                </p:outputPanel>
+            </p:dialog>            
+        </h:form>
     </ui:define>  
 </ui:composition>
