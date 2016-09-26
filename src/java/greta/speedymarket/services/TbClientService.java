@@ -8,53 +8,53 @@ package greta.speedymarket.services;
 import greta.speedymarket.dao.TbClientDAO;
 import greta.speedymarket.model.TbClient;
 import greta.speedymarket.model.TbPersonne;
+import greta.speedymarket.dao.TbPersonneDAO;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-
-@ManagedBean(name="TbClientService")
+@ManagedBean(name = "TbClientService")
 @ViewScoped
 public class TbClientService {
-private TbClient selectedClient;
-public TbClient getSelectedClient() {
-return this.selectedClient;
 
-}
+    private TbClient selectedClient;
 
-public void setSelectedClient(TbClient selectedClient) {
-this.selectedClient = selectedClient;
-}
+    public TbClient getSelectedClient() {
+        return this.selectedClient;
 
-public void createClient() {
-TbClient newClient = (TbClient)new TbClient(new TbPersonne("Nouveau","Client","",0,"",""));
-TbClientDAO tbClientDAO = new TbClientDAO();
-tbClientDAO.save(newClient);
-}
+    }
 
+    public void setSelectedClient(TbClient selectedClient) {
+        this.selectedClient = selectedClient;
+    }
 
+    public void createClient() {
+        TbClient newClient = (TbClient) new TbClient(new TbPersonne("Nouveau", "Client", "", 0, "mail@mail.org", "0000"));
+        TbClientDAO tbClientDAO = new TbClientDAO();
+        tbClientDAO.save(newClient);
+    }
 
-public void saveClient(TbClient client) {
-if (client != null) {
-TbClientDAO tbClientDAO = new TbClientDAO();
-tbClientDAO.update(client);
-}
-}
+    public void saveClient(TbClient client) {
+        if (client != null) {
+            TbClientDAO tbClientDAO = new TbClientDAO();
+            tbClientDAO.update(client);
+        }
+    }
 
+    public void deleteClient(TbClient client) {
+        if (client != null) {
+            int idPersonne = client.getIdPersonne();
+            TbClientDAO tbClientDAO = new TbClientDAO();
+            tbClientDAO.remove(client);
+            TbPersonneDAO tbPersonneDAO = new TbPersonneDAO();
+            TbPersonne p = tbPersonneDAO.findById(idPersonne);
+            tbPersonneDAO.remove(p);
+        }
+    }
 
-
-public void deleteClient(TbClient client) {
-if (client != null) {
-TbClientDAO tbClientDAO = new TbClientDAO();
-tbClientDAO.remove(client);
-}
-}
-
-
-
-public List<TbClient> loadClients() {
-TbClientDAO tbClientDAO = new TbClientDAO();
-return tbClientDAO.findAll();
-}
+    public List<TbClient> loadClients() {
+        TbClientDAO tbClientDAO = new TbClientDAO();
+        return tbClientDAO.findAll();
+    }
 }

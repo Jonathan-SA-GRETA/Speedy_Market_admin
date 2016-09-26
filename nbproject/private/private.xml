@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/src/java/greta/speedymarket/services/TbClientService.java</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/web/articles.xhtml</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/src/java/greta/speedymarket/services/TbTvaService.java</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/web/TVA.xhtml</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/web/admin.xhtml</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/src/java/greta/speedymarket/dao/TbTvaDAO.java</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/src/java/greta/speedymarket/model/TbTva.java</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/web/categories.xhtml</file>
+            <file>file:/E:/Users/Stagiaires.GSA-TP-DEV-LOG-/Documents/NetBeansProjects/SpeedyMarket/src/java/greta/speedymarket/model/TbClient.java</file>
+        </group>
     </open-files>
 </project-private>

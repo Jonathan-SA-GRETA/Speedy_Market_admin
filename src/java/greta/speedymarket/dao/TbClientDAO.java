@@ -12,75 +12,71 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import org.hibernate.Session;
 
-
-@ManagedBean(name="TbClientDAO")
+@ManagedBean(name = "TbClientDAO")
 public class TbClientDAO {
 
-public void save(TbClient client) {
-System.out.println("persist client");
+    public void save(TbClient client) {
+        System.out.println("persist client");
 
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-try {
-session.beginTransaction();
-session.save(client);
-session.getTransaction().commit();
+        try {
+            session.beginTransaction();
+            session.save(client);
+            session.getTransaction().commit();
 
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
-}
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
 
+    public void update(TbClient client) {
+        System.out.println("merge client " + client.getIdPersonne());
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-public void update(TbClient client) {
-System.out.println("merge client " + client.getIdPersonne());
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
 
-try {
+            session.beginTransaction();
+            session.update(client);
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
 
-session.beginTransaction();
-session.update(client);
-session.getTransaction().commit();
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
-}
+    public void remove(TbClient client) {
+        System.out.println("Suppression du client " + client);
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-public void remove(TbClient client) {
-System.out.println("Suppression du client "+client);
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
+            session.beginTransaction();
+            session.delete(client);
+            session.getTransaction().commit();
 
-try {
-session.beginTransaction();
-session.delete(client);
-session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
 
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
+    }
 
-}
+    public List<TbClient> findAll() {
+        List<TbClient> lesClients = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
+        try {
+            session.beginTransaction();
+            lesClients = session.createQuery("from TbClient").list();
+            session.getTransaction().commit();
 
-public List<TbClient> findAll() {
-List<TbClient> lesClients = new ArrayList<>();
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
 
-try {
-session.beginTransaction();
-lesClients = session.createQuery("from TbClient").list();
-session.getTransaction().commit();
-
-} catch (RuntimeException e) {
-e.printStackTrace();
-session.getTransaction().rollback();
-}
-
-return lesClients;
-}
+        return lesClients;
+    }
 
 }
-
