@@ -20,7 +20,7 @@ public class TbTvaService {
     }
     
     public void createTva() {
-        TbTva newTva = new TbTva();
+        TbTva newTva = new TbTva("Nouvelle taxe", 1);
         TbTvaDAO tbTvaDAO = new TbTvaDAO();
         tbTvaDAO.save(newTva);
     }
