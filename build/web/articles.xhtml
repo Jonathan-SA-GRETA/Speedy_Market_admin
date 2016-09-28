@@ -51,9 +51,7 @@
                         <h:outputText value="Prix HT" />
                         <h:inputText value="#{TbArticleService.selectedArticle.APht}" style="width: 50px;" />
                         <h:outputText value="Stock" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.AQuantiteStock}" style="width: 50px;" />
-                        <h:outputText value="Catégorie" />
-                        <h:inputText value="#{TbArticleService.selectedArticle.tbCategorie.CLibelle}" style="width: 300px;" />                          
+                        <h:inputText value="#{TbArticleService.selectedArticle.AQuantiteStock}" style="width: 50px;" />                        
                     </p:panelGrid>
                     <br/>
                     <p:commandButton update=":form:tableArticle" icon="ui-icon-search" value="Enregistrer"
