@@ -44,15 +44,9 @@
                 <p:outputPanel id="commandeDetail" >
                     <p:panelGrid columns="2" rendered="#{not empty TbCommandeService.selectedCommande}" columnClasses="label,value">
                         <h:outputText value="Date de la commande" />
-                        <h:inputText value="#{TbCommandeService.selectedCommande.CDate}" style="width: 300px;" />                        
+                        <p:calendar value="#{TbCommandeService.selectedCommande.CDate}" pattern="MM/dd/yyyy HH:mm:ss" style="width: 300px;" />                        
                         <h:outputText value="Date du retrait" />
-                        <h:inputText value="#{TbCommandeService.selectedCommande.CDateretrait}" style="width: 300px;" />
-                        <h:outputText value="Statut" />
-                        <h:inputText value="#{TbCommandeService.selectedCommande.tbStatut.SLibelle}" style="width: 300px;" />
-                        <h:outputText value="Nom du client" />
-                        <h:inputText value="#{TbCommandeService.selectedCommande.tbPersonneByClientIdPers.PNom}" style="width: 50px;" />
-                        <h:outputText value="Préparateur" />
-                        <h:inputText value="#{TbCommandeService.selectedCommande.tbPersonneByPrepaIdPers.PNom}" style="width: 50px;" />                       
+                        <p:calendar value="#{TbCommandeService.selectedCommande.CDateretrait}" pattern="MM/dd/yyyy HH:mm:ss" style="width: 300px;" />                  
                     </p:panelGrid>
                     <br/>
                     <p:commandButton update=":form:tableCommande" icon="ui-icon-search" value="Enregistrer"

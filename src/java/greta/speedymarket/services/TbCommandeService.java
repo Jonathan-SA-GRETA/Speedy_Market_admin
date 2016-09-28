@@ -2,6 +2,8 @@ package greta.speedymarket.services;
 
 import greta.speedymarket.dao.TbCommandeDAO;
 import greta.speedymarket.model.TbCommande;
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -26,7 +28,7 @@ public class TbCommandeService {
     }
 
     public void createCommande() {
-        TbCommande newCommande = new TbCommande();
+        TbCommande newCommande = new TbCommande(new Date());
         TbCommandeDAO tbCommandeDAO = new TbCommandeDAO();
         tbCommandeDAO.save(newCommande);
     }
