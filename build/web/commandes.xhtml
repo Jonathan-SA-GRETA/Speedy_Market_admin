@@ -1,13 +1,67 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:c="http://java.sun.com/jsp/jstl/core"
-    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-    template="/templates/template.xhtml"
-    xmlns:p="http://primefaces.org/ui">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        Page commandes
+
+        <h:form id="form">
+            <p:dataTable id="tableCommande" var="commande" value="#{TbCommandeService.loadCommandes()}"
+                         selectionMode="single" selection="#{TbCommandeService.selectedCommande}" rowKey="#{commande.idCommande}"
+                         rows="10" paginator="true">
+                <f:facet name="header">
+                    Liste des commandes
+                </f:facet>
+                <p:ajax event="rowSelect" update=":form" />
+                <p:column headerText="Date de la commande">
+                    <p:outputLabel value="#{commande.CDate}" />
+                </p:column>
+                <p:column headerText="Date du retrait">
+                    <p:outputLabel value="#{commande.CDateretrait}" />
+                </p:column>
+                <p:column headerText="Statut">
+                    <p:outputLabel value="#{commande.tbStatut.SLibelle}" />
+                </p:column>
+                <p:column headerText="Nom du client">
+                    <p:outputLabel value="#{commande.tbPersonneByClientIdPers.PNom}" />
+                </p:column>                
+                <p:column headerText="Préparateur">
+                    <p:outputLabel value="#{commande.tbPersonneByPrepaIdPers.PNom}" />
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton update=":form:tableCommande" icon="ui-icon-plusthick" value="Ajouter" actionListener="#{TbCommandeService.createCommande()}" />
+                    <p:commandButton update=":form:commandeDetail" icon="ui-icon-search" value="Editer" oncomplete="PF('commandeDialog').show()" disabled="#{empty TbCommandeService.selectedCommande}" />
+                    <p:commandButton update=":form:tableCommande" icon="ui-icon-closethick" value="Supprimer" actionListener="#{TbCommandeService.deleteCommande(TbCommandeService.selectedCommande)}" disabled="#{empty TbCommandeService.selectedCommande}" />
+                </f:facet>                
+            </p:dataTable>
+            <p:dialog header="Détail commande" widgetVar="commandeDialog"
+                      showEffect="fade" hideEffect="fade"
+                      resizable="true" height="400" width="450" >
+                <p:outputPanel id="commandeDetail" >
+                    <p:panelGrid columns="2" rendered="#{not empty TbCommandeService.selectedCommande}" columnClasses="label,value">
+                        <h:outputText value="Date de la commande" />
+                        <h:inputText value="#{TbCommandeService.selectedCommande.CDate}" style="width: 300px;" />                        
+                        <h:outputText value="Date du retrait" />
+                        <h:inputText value="#{TbCommandeService.selectedCommande.CDateretrait}" style="width: 300px;" />
+                        <h:outputText value="Statut" />
+                        <h:inputText value="#{TbCommandeService.selectedCommande.tbStatut.SLibelle}" style="width: 300px;" />
+                        <h:outputText value="Nom du client" />
+                        <h:inputText value="#{TbCommandeService.selectedCommande.tbPersonneByClientIdPers.PNom}" style="width: 50px;" />
+                        <h:outputText value="Préparateur" />
+                        <h:inputText value="#{TbCommandeService.selectedCommande.tbPersonneByPrepaIdPers.PNom}" style="width: 50px;" />                       
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton update=":form:tableCommande" icon="ui-icon-search" value="Enregistrer"
+                                     actionListener="#{TbCommandeService.saveCommande(TbCommandeService.selectedCommande)}"
+                                     onsuccess="PF('commandeDialog').hide()"
+                                     style="text-align: center;"/>
+                </p:outputPanel>
+            </p:dialog>            
+        </h:form>
+
     </ui:define>  
 </ui:composition>
